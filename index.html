@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M11</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para la misión y conectar con los estudiantes.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy nos adentraremos en una técnica avanzada de prompts conocida como Few Shot Prompting. Esta técnica es clave para lograr que la IA responda con mayor precisión usando ejemplos específicos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si están listos para aprender cómo darle ejemplos claros a la IA y obtener respuestas precisas, levanten la mano derecha. Si sienten que aún necesitan despejarse un poco, crucen los brazos un momento."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer esta oportunidad de aprender algo nuevo. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy nos enfocaremos en dos objetivos: 1. Aprender a crear prompts efectivos con ejemplos específicos. 2. Utilizar few shot prompting para mejorar la precisión del modelo en tareas especializadas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">🚀 Actividad 2: Innovación del Día ⏰ Tiempo: 3.5 minutos</div>
+        <div class="subtitle">Explorar el uso de ejemplos específicos para mejorar la comunicación y precisión.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy hablaremos de Crystal Knows, una herramienta que usa ejemplos personalizados para adaptar mensajes y mejorar la comunicación en equipos. Imagina que puedes enviar correos o mensajes que se ajustan perfectamente al estilo y personalidad de quien los recibe. Crystal Knows usa perfiles de personalidad para que cada mensaje sea más efectivo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Cómo Funciona Crystal Knows".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Crystal Knows adapta su comunicación basándose en ejemplos específicos, un enfoque que se alinea con el few shot prompting. Así como la IA mejora sus respuestas usando ejemplos, esta herramienta ajusta la forma de comunicarse para maximizar la efectividad. Por ejemplo, si le escribieras a alguien que prefiere mensajes directos y rápidos, Crystal sugerirá un texto breve y preciso."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 8 "Reflexión: Aplicaciones del Few Shot Prompting".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Piensen cómo esta técnica de usar ejemplos específicos puede ser útil en otras áreas. No solo sirve para IA, sino también en la vida diaria, como adaptar la forma en que se comunican según la audiencia. ¿Se les ocurre en qué otros escenarios podríamos aplicar este enfoque para mejorar nuestras interacciones?"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 11.5 minutos</div>
+        <div class="subtitle">Explorar el Few-Shot Prompting y sus aplicaciones en la creación de prompts efectivos.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Introducción al Brain Gym".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bienvenidos al Brain Gym. Hoy vamos a explorar el Few-Shot Prompting, una técnica avanzada para crear prompts más efectivos, mejorando la precisión del modelo al darle ejemplos claros de lo que queremos. Esta técnica no solo aumenta la eficiencia de la IA, sino que también nos enseña a ser más precisos en nuestras instrucciones. Vamos a sumergirnos en cómo funciona y cuáles son sus aplicaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "¿Qué es Few-Shot Prompting?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El Few-Shot Prompting consiste en mostrarle a la IA varios ejemplos dentro del mismo prompt. Estos ejemplos ayudan a la IA a reconocer patrones y adaptarse rápidamente a la tarea requerida. Existen tres variaciones principales: Zero-Shot, One-Shot, y Few-Shot. La diferencia radica en la cantidad de ejemplos proporcionados: en Few-Shot, damos dos o más ejemplos para guiar al modelo hacia la respuesta correcta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Ejemplo 1: Clasificación de Comentarios".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Imagina que quieres clasificar comentarios de clientes. En vez de dar instrucciones, incluyes ejemplos como: 'El producto es excelente: positivo' o 'No funcionó como esperaba: negativo'. Así, la IA usa esos ejemplos para deducir cómo clasificar otros comentarios. Es como enseñarle a alguien cómo usar un filtro de opiniones en Amazon. Cuando muestras suficientes ejemplos, la IA aprende el patrón y lo aplica en nuevas situaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Ejemplo 2: Extracción de Información".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora veamos cómo extraer información estructurada. Piensa en anuncios de empleo: puedes mostrar ejemplos de cómo extraer datos relevantes, como 'Puesto: Ingeniero de Software, Experiencia: 5 años'. Al hacer esto, la IA puede leer anuncios similares y crear listas ordenadas con los mismos parámetros. ¿Alguna vez te preguntaste cómo LinkedIn filtra la información en sus búsquedas? Este es un caso práctico de Few-Shot Prompting."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Ejemplo 3: Itinerarios de Viaje".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La técnica también sirve para generar contenido creativo. Por ejemplo, si muestras cómo escribir un itinerario de viaje, la IA puede generar uno nuevo siguiendo la misma estructura. Imagina darle un itinerario de Roma y luego pedirle uno para Tokio. Con los ejemplos correctos, la IA sabe cómo estructurarlo, mencionando lugares emblemáticos, actividades culturales y gastronomía local."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Beneficios".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Entre sus beneficios encontramos: mejora la precisión de las respuestas, facilita la creación de contenido estructurado y permite a la IA adaptarse rápidamente sin necesidad de entrenarla desde cero. Esto hace que sea ideal para situaciones donde el tiempo apremia o donde la tarea necesita una salida específica, como responder tickets de soporte técnico con rapidez y precisión."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Aplicaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Desde la clasificación de sentimientos en redes sociales hasta la generación automática de informes financieros, el Few-Shot Prompting tiene aplicaciones prácticas en múltiples industrias. También se usa en traducción automática y en generación de código, ayudando a desarrolladores a crear fragmentos específicos según el lenguaje de programación. Por ejemplo, podrías darle ejemplos de código en Python, y la IA generará uno en Java con la misma lógica."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Mejores Prácticas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Consejo de vida: menos es más. No necesitas saturar de ejemplos, sino dar los más relevantes y organizarlos de forma clara. Prueba varias estructuras de prompts y ajusta los ejemplos según las respuestas de la IA. La calidad del resultado depende de cómo elijas y presentes los ejemplos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Zero-Shot Prompting".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En Zero-Shot Prompting, no das ejemplos. Solo das instrucciones directas. Esta técnica es rápida y útil para tareas simples, como sumar dos números. Sin embargo, para tareas más complejas, es mejor proporcionar ejemplos para asegurar precisión. Todo el trabajo de Prompting que hemos hecho hasta el momento ha sido Zero-Shot Prompting."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "One-Shot y Few-Shot".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "One-Shot usa un solo ejemplo, mientras que Few-Shot usa varios. Esto último es más efectivo para tareas complejas. Cuantos más ejemplos relevantes proporciones, mejor será el resultado."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Limitaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La técnica tiene límites: demasiados ejemplos pueden saturar al modelo, y no siempre reconoce patrones complejos. Además, la elección y el orden de los ejemplos afectan la calidad de la respuesta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Conclusión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El Few-Shot Prompting es una herramienta poderosa, pero su éxito depende de la práctica. Al dominar esta técnica, puedes mejorar la interacción con la IA en tareas especializadas y creativas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "FAQ".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Preguntas comunes incluyen: ¿Cuántos ejemplos debo usar? ¿Qué formato es mejor? Experimentar es la clave para encontrar la combinación adecuada de ejemplos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Objetivos Completados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos alcanzado el primer objetivo del día: aprender a crear prompts efectivos con ejemplos específicos. ¡Vamos por más!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🎯 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio para promover la empatía y la conexión entre los estudiantes.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Saludo de Suerte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Chicos, antes de seguir con el reto, vamos a hacer un ejercicio rápido para conectarnos como equipo y fomentar un buen ambiente. Quiero que se pongan de pie y saluden a todos los que estén cerca, mientras dicen: 'Suerte en el reto'. La idea es empezar con la mejor energía y generar empatía entre ustedes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Beneficios del Saludo de Suerte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Este pequeño saludo puede parecer sencillo, pero tiene un impacto enorme. Fomentar la empatía ayuda a crear un ambiente colaborativo, y tener buenos deseos para el reto fortalece los lazos entre ustedes. Además, un buen saludo puede reducir tensiones y mejorar la comunicación en equipo. Recuerden que en los retos que siguen, trabajar en equipo será fundamental para su éxito. ¡Vamos con todo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 5: Team Gnius ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Formación de equipos y preparación para el reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para el siguiente reto, quiero que formen equipos de tres personas. La única regla es que no deben trabajar con las mismas personas que en el reto anterior. ¡Es una gran oportunidad para conocer mejor a otros compañeros! Les doy un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 27 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Ya tienen sus equipos listos? Perfecto. Ahora, un representante de cada equipo tiene un minuto para pasar al frente y recoger las Magic Tablets. Estas serán esenciales para el siguiente reto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 29 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 23 minutos</div>
+        <div class="subtitle">Aplicar Few-Shot Prompting para resolver un problema de organización.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 30 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy nos enfrentamos a un reto de organización. Imaginen que tienen que coordinar un evento escolar con múltiples actividades, pero toda la información nos llega en textos confusos y desorganizados. Para resolver este problema, usaremos ChatGPT como nuestro aliado. La regla principal: ChatGPT será su única fuente de información y el 4to miembro del equipo. Vamos a sacarle el mayor provecho con prompts bien diseñados."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 31 "Reglas del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto tiene varias fases. Usaremos Few-Shot Prompting para transformar textos confusos en un programa estructurado. Recuerden que cada prompt con ChatGPT debe ser claro y eficiente. Cada equipo va a crear un prompt con ejemplos para guiar a la IA, y así obtener la información estructurada que necesitan. Les daré tiempos específicos para cada fase."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Fase 1 - Datos No Estructurados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta fase, leerán las entregas de actividades que se enviaron de forma desorganizada. Su misión es identificar los datos relevantes como el nombre del club, actividad, hora y ubicación. Reconozcan las inconsistencias y vean cómo ChatGPT puede ayudarlos a organizarlos mejor."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 33 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Fase 2 - Ejemplos de Few-Shot".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, seleccionen uno de los textos y manualmente extraigan los datos relevantes. Este será su ejemplo para construir el prompt. Usen un formato estructurado, como una tabla. Consejo: Mientras más claro sea su ejemplo, mejor responderá la IA."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 35 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Fase 3 - Construcción del Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Con el ejemplo que hicieron, ahora construirán su prompt completo. Denle una instrucción clara a ChatGPT e incluyan su ejemplo como guía para que la IA sepa cómo estructurar los nuevos textos. Recuerden: ChatGPT es su consultor, así que usen preguntas claras para afinar su prompt."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 37 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Fase 4 - Procesar con ChatGPT".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Usen su prompt para extraer los datos de los textos restantes. Revisen cada salida para asegurar que los datos sean precisos y estén bien estructurados. Si algo no está claro, hagan ajustes y pidan una nueva respuesta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (3 minutos):</strong> Proyectar Diapositiva 39 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Fase 5 - Compilar Programa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora es momento de unir todos los datos estructurados en un solo documento o tabla. Organicen las actividades por hora o club, y asegúrense de que no haya conflictos. El objetivo es que el programa sea claro y fácil de seguir. Consejo: Visualicen cómo se verá este programa para la audiencia."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (4 minutos):</strong> Proyectar Diapositiva 41 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 42 "Presentación de Resultados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora escucharemos a dos equipos voluntarios que compartirán su programa con el grupo. Cada equipo tendrá un minuto para presentar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (2 minutos):</strong> Proyectar Diapositiva 43 con cronómetro.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 44 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a revisar los objetivos de esta misión. 1. Aprender a crear prompts efectivos con ejemplos específicos. 2. Utilizar Few-Shot Prompting para mejorar la precisión del modelo. Ambos objetivos los hemos alcanzado al aplicar esta técnica en el reto. ¡Excelente trabajo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (0.5 minutos):</strong> Proyectar Diapositiva 45 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, lo lograron. Hoy aprendieron a usar Few-Shot Prompting y lograron estructurar un programa completo. ¡Cada equipo se lleva Mon-e por su esfuerzo y colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Momento divertido para ganar Mon-e extra.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 46 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento del Easter Egg. ¿Listos para ganar Mon-e? Esta es su oportunidad de demostrar lo que aprendieron durante la misión. Recuerden la dinámica: No digan la respuesta en voz alta, simplemente levanten la mano si la saben. Escogeré a tres de ustedes para que me susurren la respuesta al oído."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 47 con la pregunta.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Cómo se categorizan todos los prompts que habíamos hecho hasta antes de esta misión?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 48 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Uno por uno vengan a susurrarme la respuesta. Ahora tú, luego tú, y finalmente tú. La respuesta correcta es: Zero-Shot Prompts. ¡Felicidades a los ganadores! Se llevan Mon-e extra."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🎓 Actividad 8: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Devolver las Magic Tablets y ordenar el espacio de trabajo.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 49 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de devolver las Magic Tablets y dejar todo en orden. Gracias por su trabajo hoy, hicieron un gran esfuerzo. Un espacio limpio refleja el respeto por lo que hacemos y por quienes compartimos este espacio. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
